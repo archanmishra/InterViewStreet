@@ -4,25 +4,35 @@ package interviewStreetInsertionSort;
 import java.util.*;
 
 public class Solution {
-
+	static int shifts = 0;
 	static void insertionSort(int[] ar) {
-		int temp = ar[ar.length - 1];
-		for (int i = ar.length - 2; i >= 0; i--) {
-			if (ar[i] > temp) {
-				shiftRight(ar, i);
-				printArray(ar);
-			} else {
-				ar[i + 1] = temp;
-				printArray(ar);				
-				return;
+		int j = ar.length - 1;
+		int i = 0;
+//		if (ar.length <= 2) {
+////			printArray(ar);
+//			return;
+//		}
+		for (j = 1; j < ar.length; j++) {
+			int temp = ar[j];
+			for (i = j - 1; i >= 0; i--) {
+				if (ar[i] > temp) {
+					shiftRight(ar, i);
+				} else {
+					ar[i + 1] = temp;
+					break;
+				}
 			}
+			if (i == -1) {
+				ar[0] = temp;
+			}
+//			printArray(ar);
 		}
-		ar[0] = temp;
-		printArray(ar);	
+		System.out.println(shifts);
 	}
 
 	private static void shiftRight(int[] ar, int pos) {
 		ar[pos + 1] = ar[pos];
+		shifts ++;
 	}
 
 	/* Tail starts here */
