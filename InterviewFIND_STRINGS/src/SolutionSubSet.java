@@ -5,7 +5,7 @@ import java.lang.System;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-public class Solution {
+public class SolutionSubSet {
 	static class Token {
 		private Token[] tokens = new Token[2];
 		private boolean skipable = false;
