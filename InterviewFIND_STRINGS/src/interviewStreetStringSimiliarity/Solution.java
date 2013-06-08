@@ -7,21 +7,20 @@ import java.io.InputStreamReader;
 public class Solution {
 
 	public static int getSuffixesSimiliarity(char[] str) {
-		int i = 0, c = 0;
-		for (; i < str.length; i++) {
-
-			for (int j = 0; j < str.length - i; j++) {
-				try {
+		int i = 0, c = 0, j = 0;
+		int len = str.length;
+		char init = str[0];
+		for (; i < len; i++) {
+			if (init == str[i]) {
+				c++;
+				for (j = 1; j < len - i; j++) {
 					if (str[j] == str[i + j]) {
 						c++;
 					} else {
 						break;
 					}
-				} catch (IndexOutOfBoundsException e) {
-					break;
 				}
 			}
-
 		}
 		return c;
 	}
@@ -37,7 +36,8 @@ public class Solution {
 				inputs[i] = br.readLine();
 			}
 			for (int i = 0; i < noOfInputs; i++) {
-				System.out.println(getSuffixesSimiliarity(inputs[i].toCharArray()));
+				System.out.println(getSuffixesSimiliarity(inputs[i]
+						.toCharArray()));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
